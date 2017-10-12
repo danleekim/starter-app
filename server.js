@@ -32,13 +32,6 @@ app.use(
     )
 );
 
-// app.use('/bower_components',
-// express.static(path.join(__dirname, "../bower_components"), {
-//     fallthrough: false
-// })
-// );
-
-
 // start app==============================================
 app.listen(port, () => {
     console.log(`Something is happening at port: ${port}`)

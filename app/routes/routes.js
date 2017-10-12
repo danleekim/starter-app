@@ -1,16 +1,23 @@
 const router = require('express').Router();
 const path = require('path')
 
-module.exports = router; 
-
-
-//get call on root path links the public/index.html file 
+//static route for homepage to get 
+//the GET call on root path links 
+//the public/index.html file 
 router.get('/', function (req, res){
     res.sendFile('public/index.html', {
         root: path.join(__dirname,'../..')
     });
 })
 
-router.post('/', function (req, res, next){
-    res.status(200).json(req.body);
-})
+//registering routes
+const contactsRoutes = require('./contacts.routes');  
+router.use('/api/contacts', contactsRoutes);
+
+
+// router.post('/api/contacts', function (req, res, next){
+    //     debugger
+    //     res.status(200).json(req.body);
+    // })
+    
+module.exports = router; 

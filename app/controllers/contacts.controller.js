@@ -6,93 +6,31 @@ const contactsService = require('../services/contacts.service')({
 	modelService: contactModel
 });
 
-module.exports = contactsController;
+// module.exports = contactsController;
+module.exports = {
+	getAll: getAll,
+	insert:insert,
+ }
 
-function contactsController() {
-	return {
-		// getAll: getAll,
-		// getOneById: getOneById,
-		insert: insert,
-		// updateById: updateById,
-		// removeById: removeById
-	};
+function insert(req, res) {
+	contactsService
+		.insert(req.body)
+	 	.then(
+			console.log('got to then')
+		 )
+		.catch(err => {
+			debugger
+			// console.log(res.status(500));
+			console.log('got to catch');
+		});
+}
 
-	// function getAll(req, res) {
-	// 	contactsService
-	// 		.getAll()
-	// 		.then(contacts => {
-	// 			const responseModel = new responses.ItemsResponse();
-	// 			responseModel.items = contacts;
-	// 			res.json(responseModel);
-	// 		})
-	// 		.catch(err => {
-	// 			res.status(500).send(new responses.ErrorResponse(err));
-	// 		});
-	// }
-
-	// function getOneById(req, res) {
-	// 	let queryCondition = {
-	// 		_id: req.params.id
-	// 	};
-
-	// 	contactsService
-	// 		.getOne(queryCondition)
-	// 		.then(contact => {
-	// 			const responseModel = new responses.ItemResponse();
-	// 			responseModel.item = contact;
-	// 			res.json(responseModel);
-	// 		})
-	// 		.catch(err => {
-	// 			return res.status(500).send(new responses.ErrorResponse(err));
-	// 		});
-	// }
-
-	function insert(req, res) {
-		contactsService
-			.insert(req.body)
-			.then()
-			// .then(contact => {
-			// 	const responseModel = new responses.ItemResponse();
-			// 	responseModel.item = contact;
-			// 	res
-			// 		.status(201)
-			// 		.location(path.join(apiPrefix, contact._id.toString()))
-			// 		.json(responseModel);
-			// })
-			.catch(err => {
-				// console.log(res.status(500));
-				console.log(res);
-			});
-	}
-
-	// function updateById(req, res) {
-	// 	let queryCondition = {
-	// 		_id: req.params.id
-	// 	};
-	// 	contactsService
-	// 		.updateOne(queryCondition, req.body)
-	// 		.then(contact => {
-	// 			const responseModel = new responses.ItemResponse();
-	// 			res.status(204).json(responseModel);
-	// 		})
-	// 		.catch(err => {
-	// 			return res.status(500).send(new responses.ErrorResponse(err.stack));
-	// 		});
-	// }
-
-	// function removeById(req, res) {
-	// 	let queryCondition = {
-	// 		_id: req.params.id
-	// 	};
-	// 	contactsService
-	// 		.removeOne(queryCondition)
-	// 		.then(contact => {
-	// 			const responseModel = new responses.ItemResponse();
-	// 			responseModel.item = contact;
-	// 			res.json(responseModel);
-	// 		})
-	// 		.catch(err => {
-	// 			return res.status(500).send(new responses.ErrorResponse(err));
-	// 		});
-	// }
+function getAll(req, res) {
+	debugger
+	contactsService
+		.getAll()
+		.then(
+			console.log("get em")
+		)
+		.catch();
 }

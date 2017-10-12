@@ -1,0 +1,23 @@
+{
+  "name": "starter-app",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "Danny Kim <iamdannykim@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.6",
+    "jquery": "^3.2.1",
+    "bootstrap": "^3.3.7"
+  }
+}

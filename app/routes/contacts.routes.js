@@ -1,11 +1,17 @@
 const router = require('express').Router()
 const contactsController = require('../controllers/contacts.controller')()
 
-module.exports = router
+// router.use('/api/users', contactsController)
+
 
 // api routes ===========================================================
-router.get('/', contactsController.getAll)
-router.get('/:id', contactsController.getOneById)
+// router.get( '/', contactsController.getAll)
+// router.get('/:id', contactsController.getOneById)
 router.post('/', contactsController.insert)
-router.put('/:id', contactsController.updateById)
-router.delete('/:id', contactsController.removeById)
+// router.put('/:id', contactsController.updateById)
+// router.delete('/:id', contactsController.removeById)
+
+
+
+
+module.exports = router

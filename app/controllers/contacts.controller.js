@@ -6,7 +6,6 @@ const contactsService = require('../services/contacts.service')({
 	modelService: contactModel
 });
 
-// module.exports = contactsController;
 module.exports = {
 	getAll: getAll,
 	insert:insert,
@@ -15,22 +14,22 @@ module.exports = {
 function insert(req, res) {
 	contactsService
 		.insert(req.body)
-	 	.then(
-			console.log('got to then')
-		 )
+	 	.then(res.status(200).json(req.body))
 		.catch(err => {
-			debugger
-			// console.log(res.status(500));
-			console.log('got to catch');
-		});
+			console.log(err.message)
+		}
+	)
 }
 
 function getAll(req, res) {
-	debugger
+	
 	contactsService
 		.getAll()
-		.then(
-			console.log("get em")
-		)
+		.then(data => {
+			console.log(data)
+			res.status(200).json(data)
+	
+		})
 		.catch();
 }
+

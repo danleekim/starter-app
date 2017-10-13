@@ -5,6 +5,8 @@ function contactsService(options) {
 
     if (!options.modelService) {
         throw new Error('Options.modelService is required')
+    }  if (!options.modelService) {
+        throw new Error('Options.modelService is required')
     }
 
     Contact = options.modelService

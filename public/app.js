@@ -1,8 +1,7 @@
 (function () {
     'use strict';
     angular
-        .module('app', [
-                //3rd party
-                'ui.router',
-                ])
+        .module('app', ['ui.router'])
+        .config(['$stateProvider', '$urlRouterProvider'])
+        }
 })();

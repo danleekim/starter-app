@@ -23,14 +23,15 @@ process.on('SIGINT', function () {
 
 app.use(bodyParser.json());
 
-app.use(require('./app/routes/routes'));
-
 app.use(
     '/public', 
     express.static(path.join(__dirname, 'public'),
     {fallthrough: false}
     )
 );
+
+app.use(require('./app/routes/routes'));
+
 
 // start app==============================================
 app.listen(port, () => {

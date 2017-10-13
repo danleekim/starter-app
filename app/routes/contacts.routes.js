@@ -1,8 +1,6 @@
 const router = require('express').Router()
 const contactsController = require('../controllers/contacts.controller')
 
-// router.use('/', contactsController)
-
 
 // api routes ===========================================================
 router.get('/', contactsController.getAll)

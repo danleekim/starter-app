@@ -13,11 +13,5 @@ router.get('/', function (req, res){
 //registering routes
 const contactsRoutes = require('./contacts.routes');  
 router.use('/api/contacts', contactsRoutes);
-
-
-// router.post('/api/contacts', function (req, res, next){
-    //     debugger
-    //     res.status(200).json(req.body);
-    // })
     
 module.exports = router; 

@@ -12,7 +12,7 @@
                 views: {
                     'content@app': {
                         templateUrl: './public/content.html',
-                        controller: ''
+                        controller: 'contentController as ctrl'
                     }
                 }
             })

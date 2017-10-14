@@ -1,5 +1,4 @@
 /* global angular */
-
 (function () {
     'use strict'
 
@@ -26,7 +25,5 @@
         function onError(error) {
             return $q.reject(error.data)
         }
-
     }
-
-})
+})();

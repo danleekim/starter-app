@@ -22,8 +22,8 @@
     ];
 
     function RouteConfig($stateProvider, $urlRouterProvider, $locationProvider) {
-        //$urlRouterProvider.otherwise("/");
+        $urlRouterProvider.otherwise("/");
         $locationProvider.html5Mode(true);
     }
 
-})()
+})();

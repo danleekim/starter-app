@@ -3,27 +3,14 @@
     'use strict'
 
     angular.module('home.content')
-        .controller('contentController', contentController), 
-    
-        contentController.$inject = ['contentService'], 
+        .controller('contentController', ContentController)
 
-        function contentController(contentService){
+        ContentController.$inject = ['contentService'] 
+
+        function ContentController(contentService){
 
             var vm = this;
-
-
-
-
-
-
-
-
-
-
-
-
+            vm.header = "Hello Danny";
 
         }
-
-
-})
+})();

@@ -11,7 +11,8 @@
                 url: '/',
                 views: {
                     'content@app': {
-                        templateUrl: './public/content.html'
+                        templateUrl: './public/content.html',
+                        controller: ''
                     }
                 }
             })

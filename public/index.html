@@ -1,34 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Starter App</title>
 
-  </head>
-  <body>
-    <h1>Can we get this to work?!</h1>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Starter App</title>
+</head>
 
-    <button class="btn">Test button</button>
+<body>
 
-    <div class="container-fluid">big container for the top</div>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+  <link rel=stylesheet href="/public/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="./public/stylesheet.css" />
+
+  <base href="/" />
+
+  <div ui-view="root"></div>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="/public/assets/js/bootstrap.min.js"></script>
+  <script src="/public/assets/js/angular.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+
+  <script src="public/main.js"></script>
+  <script src="public/app.js"></script>
+  <script src="public/module.js"></script>
+  <script src="public/module.1.js"></script>
 
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="/public/assets/js/angular.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
-    
-    
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
 
-    <link rel=stylesheet href="/public/assets/css/bootstrap.min.css">
-    <script src="/public/assets/js/bootstrap.min.js"></script>
+</body>
 
-    <div ui-view="root"></div>
-    
-
-  </body>
 </html>

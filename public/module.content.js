@@ -1,17 +1,17 @@
 (function () {
     'use strict';
     angular
-        .module('home.main', ['ui.router']).config(RouteConfig)
+        .module('home.content', ['ui.router']).config(RouteConfig)
 
     RouteConfig.$inject = ['$stateProvider']
 
     function RouteConfig($stateProvider) {
         $stateProvider
-            .state('app', {
-                abstract: true,
+            .state('app.content', {
+                url: '/',
                 views: {
-                    root: {
-                        templateUrl: './public/main.html'
+                    'content@app': {
+                        templateUrl: './public/content.html'
                     }
                 }
             })

@@ -24,16 +24,16 @@
         //             // controller: 'scheduleController as ctrl' 
         //         }
         //     }
-        // })w
+        // })
 
-        // function getAllContacts(contentService) {
-        //     return contentService.getAll()
-        //         .then(data => {
-        //             return data.items;
-        //         })
-        //         .catch(error => {
-        //             console.log(error)
-        //         })
-        // }
+        function getAllContacts(contentService) {
+            return contentService.getAll()
+                .then(data => {
+                    return data.items;
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        }
     }
 })();

@@ -16,7 +16,7 @@ $(function () {
     //service registration
 
     //views-controllers
-    'home.main', 'home.content',
+    'home.main', 'home.content','home.contacts',
 
     //services
     'home.services']).config(RouteConfig);
@@ -26,6 +26,37 @@ $(function () {
     function RouteConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         $urlRouterProvider.otherwise("/");
         $locationProvider.html5Mode(true);
+    }
+})();
+'use strict';
+
+(function () {
+    'use strict';
+
+    angular.module('home.contacts', ['ui.router']).config(RouteConfig);
+
+    RouteConfig.$inject = ['$stateProvider'];
+
+    function RouteConfig($stateProvider) {
+        $stateProvider.state('app.contacts', {
+            url: '/contacts',
+            views: {
+                'content@app': {
+                    templateUrl: '/public/modules/contacts/contacts.html',
+                    controller: 'contactsController as ctrl'
+                }
+            }
+        });
+
+        // function getAllContacts(contentService) {
+        //     return contentService.getAll()
+        //         .then(data => {
+        //             return data.items;
+        //         })
+        //         .catch(error => {
+        //             console.log(error)
+        //         })
+        // }
     }
 })();
 'use strict';
@@ -55,17 +86,15 @@ $(function () {
         //             // controller: 'scheduleController as ctrl' 
         //         }
         //     }
-        // })w
+        // })
 
-        // function getAllContacts(contentService) {
-        //     return contentService.getAll()
-        //         .then(data => {
-        //             return data.items;
-        //         })
-        //         .catch(error => {
-        //             console.log(error)
-        //         })
-        // }
+        function getAllContacts(contentService) {
+            return contentService.getAll().then(function (data) {
+                return data.items;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
     }
 })();
 'use strict';
@@ -102,11 +131,27 @@ $(function () {
 (function () {
         'use strict';
 
+        angular.module('home.contacts').controller('contactsController', ContactsController);
+
+        ContactsController.$inject = ['contentService'];
+
+        function ContactsController(contentService) {
+
+                var vm = this;
+                vm.header = "Let's add some contacts";
+        }
+})();
+'use strict';
+
+/* global angular */
+(function () {
+        'use strict';
+
         angular.module('home.content').controller('contentController', ContentController);
 
-        ContentController.$inject = ['contentService'];
+        ContentController.$inject = [];
 
-        function ContentController(contentService) {
+        function ContentController() {
 
                 var vm = this;
                 vm.header = "Hello Danny";

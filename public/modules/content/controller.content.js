@@ -5,12 +5,14 @@
     angular.module('home.content')
         .controller('contentController', ContentController)
 
-        ContentController.$inject = ['contentService'] 
+        ContentController.$inject = [] 
 
-        function ContentController(contentService){
+        function ContentController(){
 
             var vm = this;
             vm.header = "Hello Danny";
+
+            
 
 
 

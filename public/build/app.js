@@ -16,35 +16,16 @@ $(function () {
     //service registration
 
     //views-controllers
-    'home.main', 'home.content']).config(RouteConfig);
+    'home.main', 'home.content',
+
+    //services
+    'home.services']).config(RouteConfig);
 
     RouteConfig.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
 
     function RouteConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         $urlRouterProvider.otherwise("/");
         $locationProvider.html5Mode(true);
-    }
-})();
-'use strict';
-
-(function () {
-    'use strict';
-
-    angular.module('home.main', ['ui.router']).config(RouteConfig);
-
-    RouteConfig.$inject = ['$stateProvider'];
-
-    function RouteConfig($stateProvider) {
-        $stateProvider.state('app', {
-            abstract: true,
-            views: {
-                root: {
-                    templateUrl: './public/main.html',
-                    controller: 'testController as testCtrl'
-
-                }
-            }
-        });
     }
 })();
 'use strict';
@@ -61,12 +42,59 @@ $(function () {
             url: '/',
             views: {
                 'content@app': {
-                    templateUrl: './public/content.html',
+                    templateUrl: '/public/modules/content/content.html',
                     controller: 'contentController as ctrl'
                 }
             }
         });
+        // .state('app.schedule', {
+        //     url: '/schedule', 
+        //     view: {
+        //         'content@app': {
+        //             templateUrl: './public/schedule.html',
+        //             // controller: 'scheduleController as ctrl' 
+        //         }
+        //     }
+        // })w
+
+        // function getAllContacts(contentService) {
+        //     return contentService.getAll()
+        //         .then(data => {
+        //             return data.items;
+        //         })
+        //         .catch(error => {
+        //             console.log(error)
+        //         })
+        // }
     }
+})();
+'use strict';
+
+(function () {
+    'use strict';
+
+    angular.module('home.main', ['ui.router']).config(RouteConfig);
+
+    RouteConfig.$inject = ['$stateProvider'];
+
+    function RouteConfig($stateProvider) {
+        $stateProvider.state('app', {
+            abstract: true,
+            views: {
+                root: {
+                    templateUrl: '/public/modules/main/main.html'
+
+                }
+            }
+        });
+    }
+})();
+'use strict';
+
+(function () {
+    'use strict';
+
+    angular.module('home.services', []);
 })();
 'use strict';
 
@@ -90,7 +118,7 @@ $(function () {
 (function () {
     'use strict';
 
-    angular.module('home.content').factory('contentService', ContentServiceFactory);
+    angular.module('home.services').factory('contentService', ContentServiceFactory);
 
     ContentServiceFactory.$inject = ['$http', '$q'];
 

@@ -2,7 +2,7 @@
 (function () {
     'use strict'
 
-    angular.module('home.content')
+    angular.module('home.services')
         .factory('contentService', ContentServiceFactory)
 
     ContentServiceFactory.$inject = ['$http', '$q']

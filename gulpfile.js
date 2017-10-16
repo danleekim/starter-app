@@ -22,15 +22,14 @@ const source = {
     admin: {
         src: [
             // bootstrap angular
-            'public/main.js',
+            'public/modules/main.js',
             // main module
-            'public/app.js',
+            'public/modules/app.js',
             // module files
-            'public/module.js',
-            'public/module.content.js',
-
+            'public/modules/**/module.js',
+            
             // other js files [controllers, services, etc.]
-            'public/*.js'
+            'public/modules/**/!(module)*.js',
         ]
     }
 }

@@ -11,8 +11,7 @@
                 abstract: true,
                 views: {
                     root: {
-                        templateUrl: './public/main.html',
-                        controller: 'testController as testCtrl'
+                        templateUrl: '/public/modules/main/main.html',
                         
                     }
                 }

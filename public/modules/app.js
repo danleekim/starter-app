@@ -9,8 +9,10 @@
 
             //views-controllers
             'home.main',
-            'home.content'
+            'home.content',
 
+            //services
+            'home.services'
         ])
 
         .config(RouteConfig)

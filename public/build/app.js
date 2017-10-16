@@ -50,7 +50,7 @@ $(function () {
                 }
             }
         }).state('app.contacts.list', {
-            url: '/contacts/list',
+            url: '/list',
             views: {
                 'content@app': {
                     templateUrl: '/public/modules/contacts/contacts.list.html',

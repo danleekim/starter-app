@@ -13,7 +13,7 @@
         }
 
         function getAll() {
-            return $http.get('/api/contact')
+            return $http.get('/api/contacts')
                 .then(onSuccess)
                 .catch(onError)
         }

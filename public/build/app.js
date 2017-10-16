@@ -16,7 +16,7 @@ $(function () {
     //service registration
 
     //views-controllers
-    'home.main', 'home.content','home.contacts',
+    'home.main', 'home.content', 'home.contacts',
 
     //services
     'home.services']).config(RouteConfig);
@@ -43,20 +43,33 @@ $(function () {
             views: {
                 'content@app': {
                     templateUrl: '/public/modules/contacts/contacts.html',
-                    controller: 'contactsController as ctrl'
+                    controller: 'contactsController as ctrl',
+                    resolve: {
+                        contacts: getAllContacts
+                    }
+                }
+            }
+        }).state('app.contacts.list', {
+            url: '/contacts/list',
+            views: {
+                'content@app': {
+                    templateUrl: '/public/modules/contacts/contacts.list.html',
+                    controller: 'contactsListController as ctrl',
+                    resolve: {
+                        contacts: getAllContacts
+                    }
                 }
             }
         });
 
-        // function getAllContacts(contentService) {
-        //     return contentService.getAll()
-        //         .then(data => {
-        //             return data.items;
-        //         })
-        //         .catch(error => {
-        //             console.log(error)
-        //         })
-        // }
+        function getAllContacts(contentService) {
+            debugger;
+            return contentService.getAll().then(function (data) {
+                return data.items;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
     }
 })();
 'use strict';
@@ -78,23 +91,6 @@ $(function () {
                 }
             }
         });
-        // .state('app.schedule', {
-        //     url: '/schedule', 
-        //     view: {
-        //         'content@app': {
-        //             templateUrl: './public/schedule.html',
-        //             // controller: 'scheduleController as ctrl' 
-        //         }
-        //     }
-        // })
-
-        function getAllContacts(contentService) {
-            return contentService.getAll().then(function (data) {
-                return data.items;
-            }).catch(function (error) {
-                console.log(error);
-            });
-        }
     }
 })();
 'use strict';
@@ -131,6 +127,23 @@ $(function () {
 (function () {
         'use strict';
 
+        angular.module('home.contacts').controller('contactsListController', ContactsListController);
+
+        ContactsListController.$inject = ['contentService'];
+
+        function ContactsListController(contentService) {
+
+                var vm = this;
+                vm.header = "Let's add some contacts";
+                vm.inputData = {};
+        }
+})();
+'use strict';
+
+/* global angular */
+(function () {
+        'use strict';
+
         angular.module('home.contacts').controller('contactsController', ContactsController);
 
         ContactsController.$inject = ['contentService'];
@@ -139,6 +152,7 @@ $(function () {
 
                 var vm = this;
                 vm.header = "Let's add some contacts";
+                vm.inputData = {};
         }
 })();
 'use strict';
@@ -173,7 +187,7 @@ $(function () {
         };
 
         function getAll() {
-            return $http.get('/api/contact').then(onSuccess).catch(onError);
+            return $http.get('/api/contacts').then(onSuccess).catch(onError);
         }
 
         function onSuccess(response) {

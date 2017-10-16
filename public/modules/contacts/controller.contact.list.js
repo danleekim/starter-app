@@ -3,11 +3,11 @@
     'use strict'
 
     angular.module('home.contacts')
-        .controller('contactsController', ContactsController)
+        .controller('contactsListController', ContactsListController)
 
-        ContactsController.$inject = ['contentService'] 
+        ContactsListController.$inject = ['contentService'] 
 
-        function ContactsController(contentService){
+        function ContactsListController(contentService){
 
             var vm = this;
             vm.header = "Let's add some contacts";

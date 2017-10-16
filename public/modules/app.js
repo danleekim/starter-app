@@ -10,6 +10,7 @@
             //views-controllers
             'home.main',
             'home.content',
+            'home.contacts',
 
             //services
             'home.services'

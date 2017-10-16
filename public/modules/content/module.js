@@ -16,24 +16,5 @@
                     }
                 }
             })
-        // .state('app.schedule', {
-        //     url: '/schedule', 
-        //     view: {
-        //         'content@app': {
-        //             templateUrl: './public/schedule.html',
-        //             // controller: 'scheduleController as ctrl' 
-        //         }
-        //     }
-        // })
-
-        function getAllContacts(contentService) {
-            return contentService.getAll()
-                .then(data => {
-                    return data.items;
-                })
-                .catch(error => {
-                    console.log(error)
-                })
-        }
     }
 })();

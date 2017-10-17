@@ -10,7 +10,9 @@
     function ContentServiceFactory($http, $q) {
         return {
             getAllContacts: getAllContacts,
+            getById: getById,
             insert: insert,
+            
         }
 
         function getAllContacts() {
@@ -23,6 +25,12 @@
             return $http.post('/api/contacts', contact)
                 .then(onSuccess)
                 .catch(onError)
+        }
+
+        function getById(id, onSuccess, onError) {
+            return $http.get('./api/contacts/$(id)')
+            .then(onSuccess)
+            .catch(onError)
         }
 
         function onSuccess(response) {

@@ -3,18 +3,18 @@
     'use strict'
 
     angular.module('home.contacts')
-        .controller('contactsListController', ContactsListController)
+        .controller('contactsDetailController', ContactsDetailController)
 
-    ContactsListController.$inject = ['contentService']
+        ContactsDetailController.$inject = ['contentService', 'contacts']
 
-    function ContactsListController(contentService) {
+    function ContactsDetailController(contentService, contacts) {
 
         var vm = this;
 
         init();
 
         function init() {
-            return contentService.getAllContacts()
+            return contentService.getById(id)
             .then(data =>{
                 vm.contacts = data;
                 console.log(vm.contacts)

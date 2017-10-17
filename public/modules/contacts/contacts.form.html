@@ -1,0 +1,23 @@
+<h2>Add contacts</h2>
+<div class="container col-sm-10 text-left">
+    <form>
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="firstName" ng-model="ctrl.formData.firstName" class="form-control" id="firstNameInput" placeholder="First Name">
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="lastName" ng-model="ctrl.formData.lastName"class="form-control" id="lastNameInput" placeholder="Last Name">
+        </div>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input ng-model="ctrl.formData.email" type="email" class="form-control" id="emailInput" placeholder="name@something.com">
+        </div>
+        <div class="form-group">
+            <label for="birthday">Birthday</label>
+            <input type="birthday" ng-model="ctrl.formData.birthday" class="form-control" id="birthdayInput" placeholder="Birthday (mm/dd/yy)">
+        </div>     
+
+        <button class="btn btn-secondary" type="submit" ng-click="ctrl.submitForm()">Submit</button>
+    </form>
+</div>

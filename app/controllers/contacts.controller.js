@@ -9,6 +9,8 @@ const contactsService = require('../services/contacts.service')({
 module.exports = {
 	getAll: getAll,
 	insert: insert,
+	getOneById: getOneById,
+	// removeById: removeById
 }
 
 function insert(req, res) {
@@ -31,3 +33,32 @@ function getAll(req, res) {
 			console.log(err.message)
 		});
 }
+
+function getOneById(req, res) {
+	let queryCondition = {
+		_id: req.params.id
+	}
+	contactsService
+		.getOne(queryCondition)
+		.then(contact =>{
+			res.status(200).json(contact)
+		})
+		.catch(err => {
+			console.log(err)
+		})
+}
+
+
+// function removeById(req, res) {
+// 	let queryCondition = {
+// 		_id: req.params.id
+// 	}
+// 	contactsService
+// 		.removeOne(queryCondition)
+// 		.then(contact => {
+// 			res.status(200).json(data)
+// 		})
+// 		.catch(err =>{
+// 			console.log(err.message)
+// 		})
+// }

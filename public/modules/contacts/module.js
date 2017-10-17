@@ -15,8 +15,8 @@
                 url: '/contacts',
                 views: {
                     'content@app': {
-                        templateUrl: '/public/modules/contacts/contacts.html',
-                        controller: 'contactsController as contactCtrl',
+                        templateUrl: '/public/modules/contacts/contacts.form.html',
+                        controller: 'contactsController as ctrl',
                     }
                 }
             })
@@ -26,7 +26,17 @@
                     'content@app': {
                         templateUrl: '/public/modules/contacts/contacts.list.html',
                         controller: 'contactsListController as ctrl',
-                        
+
+                    }
+                }
+            })
+            .state('app.contacts.detail', {
+                url: '/detail/:id',
+                views: {
+                    'content@app': {
+                        templateUrl: '/public/modules/contacts/contact.detail.html',
+                        controller: 'contactsDetailController as ctrl',
+
                     }
                 }
             })

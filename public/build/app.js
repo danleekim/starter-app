@@ -45,8 +45,8 @@ $(function () {
             url: '/contacts',
             views: {
                 'content@app': {
-                    templateUrl: '/public/modules/contacts/contacts.html',
-                    controller: 'contactsController as contactCtrl'
+                    templateUrl: '/public/modules/contacts/contacts.form.html',
+                    controller: 'contactsController as ctrl'
                 }
             }
         }).state('app.contacts.list', {
@@ -55,6 +55,15 @@ $(function () {
                 'content@app': {
                     templateUrl: '/public/modules/contacts/contacts.list.html',
                     controller: 'contactsListController as ctrl'
+
+                }
+            }
+        }).state('app.contacts.detail', {
+            url: '/detail/:id',
+            views: {
+                'content@app': {
+                    templateUrl: '/public/modules/contacts/contact.detail.html',
+                    controller: 'contactsDetailController as ctrl'
 
                 }
             }
@@ -116,6 +125,32 @@ $(function () {
 (function () {
     'use strict';
 
+    angular.module('home.contacts').controller('contactsDetailController', ContactsDetailController);
+
+    ContactsDetailController.$inject = ['contentService', 'contacts'];
+
+    function ContactsDetailController(contentService, contacts) {
+
+        var vm = this;
+
+        init();
+
+        function init() {
+            return contentService.getById(id).then(function (data) {
+                vm.contacts = data;
+                console.log(vm.contacts);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    }
+})();
+'use strict';
+
+/* global angular */
+(function () {
+    'use strict';
+
     angular.module('home.contacts').controller('contactsListController', ContactsListController);
 
     ContactsListController.$inject = ['contentService'];
@@ -123,12 +158,11 @@ $(function () {
     function ContactsListController(contentService) {
 
         var vm = this;
-        vm.header = "Let's add some contacts";
+
         init();
 
         function init() {
             return contentService.getAllContacts().then(function (data) {
-                debugger;
                 vm.contacts = data;
                 console.log(vm.contacts);
             }).catch(function (error) {
@@ -150,7 +184,6 @@ $(function () {
     function ContactsController(contentService) {
 
         var vm = this;
-        vm.header = "Let's add some contacts";
 
         vm.submitForm = function () {
             return contentService.insert(vm.formData).then(onInsertSuccess).catch(onInsertError);
@@ -159,6 +192,7 @@ $(function () {
         function onInsertSuccess(data) {
             console.log("success");
         }
+
         function onInsertError(error) {
             console.log(error);
         }
@@ -193,7 +227,9 @@ $(function () {
     function ContentServiceFactory($http, $q) {
         return {
             getAllContacts: getAllContacts,
+            getById: getById,
             insert: insert
+
         };
 
         function getAllContacts() {
@@ -202,6 +238,10 @@ $(function () {
 
         function insert(contact, onSuccess, onError) {
             return $http.post('/api/contacts', contact).then(onSuccess).catch(onError);
+        }
+
+        function getById(id, onSuccess, onError) {
+            return $http.get('./api/contacts/$(id)').then(onSuccess).catch(onError);
         }
 
         function onSuccess(response) {

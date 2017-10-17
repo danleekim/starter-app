@@ -5,23 +5,23 @@
     angular.module('home.contacts')
         .controller('contactsDetailController', ContactsDetailController)
 
-        ContactsDetailController.$inject = ['contentService', 'contacts']
+        ContactsDetailController.$inject = ['$stateParams','contentService']
 
-    function ContactsDetailController(contentService, contacts) {
+    function ContactsDetailController($stateParams, contentService) {
 
         var vm = this;
 
-        init();
+        // init();
 
-        function init() {
-            return contentService.getById(id)
-            .then(data =>{
-                vm.contacts = data;
-                console.log(vm.contacts)
-            })
-            .catch(error => {
-                console.log(error)
-            })
-        }
+        // function init() {
+        //     return contentService.getById(id)
+        //     .then(data =>{
+        //         vm.contacts = data;
+        //         console.log(vm.contacts)
+        //     })
+        //     .catch(error => {
+        //         console.log(error)
+        //     })
+        // }
     }
 })();

@@ -55,19 +55,30 @@ $(function () {
                 'content@app': {
                     templateUrl: '/public/modules/contacts/contacts.list.html',
                     controller: 'contactsListController as ctrl'
-
                 }
             }
         }).state('app.contacts.detail', {
+            // url: '/detail',
             url: '/detail/:id',
             views: {
                 'content@app': {
                     templateUrl: '/public/modules/contacts/contact.detail.html',
                     controller: 'contactsDetailController as ctrl'
-
                 }
+            },
+            resolve: {
+                contactById: getContactById
             }
         });
+
+        function getContactById($stateParams, contentService) {
+            debugger;
+            return contentService.getById($stateParams.id).then(function (data) {
+                return data.item;
+            }).catch(function (err) {
+                console.log(err);
+            });
+        }
     }
 })();
 'use strict';
@@ -127,22 +138,24 @@ $(function () {
 
     angular.module('home.contacts').controller('contactsDetailController', ContactsDetailController);
 
-    ContactsDetailController.$inject = ['contentService', 'contacts'];
+    ContactsDetailController.$inject = ['$stateParams', 'contentService'];
 
-    function ContactsDetailController(contentService, contacts) {
+    function ContactsDetailController($stateParams, contentService) {
 
         var vm = this;
 
-        init();
+        // init();
 
-        function init() {
-            return contentService.getById(id).then(function (data) {
-                vm.contacts = data;
-                console.log(vm.contacts);
-            }).catch(function (error) {
-                console.log(error);
-            });
-        }
+        // function init() {
+        //     return contentService.getById(id)
+        //     .then(data =>{
+        //         vm.contacts = data;
+        //         console.log(vm.contacts)
+        //     })
+        //     .catch(error => {
+        //         console.log(error)
+        //     })
+        // }
     }
 })();
 'use strict';
@@ -153,9 +166,9 @@ $(function () {
 
     angular.module('home.contacts').controller('contactsListController', ContactsListController);
 
-    ContactsListController.$inject = ['contentService'];
+    ContactsListController.$inject = ['$stateParams', 'contentService'];
 
-    function ContactsListController(contentService) {
+    function ContactsListController($stateParams, contentService) {
 
         var vm = this;
 
@@ -164,7 +177,6 @@ $(function () {
         function init() {
             return contentService.getAllContacts().then(function (data) {
                 vm.contacts = data;
-                console.log(vm.contacts);
             }).catch(function (error) {
                 console.log(error);
             });
@@ -241,7 +253,7 @@ $(function () {
         }
 
         function getById(id, onSuccess, onError) {
-            return $http.get('./api/contacts/$(id)').then(onSuccess).catch(onError);
+            return $http.get('./api/contacts/${id}').then(onSuccess).catch(onError);
         }
 
         function onSuccess(response) {

@@ -7,7 +7,7 @@ router.get('/', contactsController.getAll)
 router.get('/:id', contactsController.getOneById)
 router.post('/', contactsController.insert)
 // router.put('/:id', contactsController.updateById)
-// router.delete('/:id', contactsController.removeById)
+router.delete('/:id', contactsController.removeById)
 
 
 module.exports = router;

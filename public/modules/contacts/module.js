@@ -26,19 +26,35 @@
                     'content@app': {
                         templateUrl: '/public/modules/contacts/contacts.list.html',
                         controller: 'contactsListController as ctrl',
-
                     }
                 }
             })
             .state('app.contacts.detail', {
+                // url: '/detail',
                 url: '/detail/:id',
                 views: {
                     'content@app': {
                         templateUrl: '/public/modules/contacts/contact.detail.html',
                         controller: 'contactsDetailController as ctrl',
-
                     }
+                },
+                resolve: {
+                    contactById: getContactById
                 }
             })
+
+        function getContactById($stateParams, contentService) {
+            debugger
+            return contentService
+                .getById($stateParams.id)
+                .then(data => {
+                    return data.item
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+
     }
+
 })();

@@ -10,7 +10,7 @@ module.exports = {
 	getAll: getAll,
 	insert: insert,
 	getOneById: getOneById,
-	// removeById: removeById
+	removeById: removeById
 }
 
 function insert(req, res) {
@@ -49,16 +49,17 @@ function getOneById(req, res) {
 }
 
 
-// function removeById(req, res) {
-// 	let queryCondition = {
-// 		_id: req.params.id
-// 	}
-// 	contactsService
-// 		.removeOne(queryCondition)
-// 		.then(contact => {
-// 			res.status(200).json(data)
-// 		})
-// 		.catch(err =>{
-// 			console.log(err.message)
-// 		})
-// }
+function removeById(req, res) {
+	let queryCondition = {
+		_id: req.params.id
+	}
+	contactsService
+		.removeOne(queryCondition)
+		.then(data => {
+			console.log(data)
+			res.status(200).json(data)
+		})
+		.catch(err =>{
+			console.log(err.message)
+		})
+}

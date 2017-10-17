@@ -5,9 +5,9 @@
     angular.module('home.contacts')
         .controller('contactsListController', ContactsListController)
 
-    ContactsListController.$inject = ['contentService']
+    ContactsListController.$inject = ['$stateParams','contentService']
 
-    function ContactsListController(contentService) {
+    function ContactsListController($stateParams, contentService) {
 
         var vm = this;
 
@@ -17,7 +17,6 @@
             return contentService.getAllContacts()
             .then(data =>{
                 vm.contacts = data;
-                console.log(vm.contacts)
             })
             .catch(error => {
                 console.log(error)

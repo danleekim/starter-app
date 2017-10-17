@@ -28,7 +28,7 @@
         }
 
         function getById(id, onSuccess, onError) {
-            return $http.get('./api/contacts/$(id)')
+            return $http.get('./api/contacts/${id}')
             .then(onSuccess)
             .catch(onError)
         }

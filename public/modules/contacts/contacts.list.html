@@ -6,16 +6,17 @@
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email Address</th>
+                <th>ID</th>
                 <th>Birthday</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="contact in ctrl.contacts">
                 <th>{{$index + 1}}</th>
-                <th><a ui-sref="^.detail({id: contacts._id})">{{contact.firstName}}</a></th>
-                <th><a ui-sref="^.detail">{{contact.firstName}}</a></th>
+                <th><a ui-sref="app.contacts.detail({id: contact._id})">{{contact.firstName}}</a></th>
                 <th>{{contact.lastName}}</th>
                 <th>{{contact.email}}</th>
+                <th>{{contact._id}}</th>
                 <th>{{contact.birthday | date : 'MM/dd/yy'}}</th>
             </tr>
         </tbody>

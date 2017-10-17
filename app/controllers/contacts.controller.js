@@ -8,28 +8,26 @@ const contactsService = require('../services/contacts.service')({
 
 module.exports = {
 	getAll: getAll,
-	insert:insert,
- }
+	insert: insert,
+}
 
 function insert(req, res) {
 	contactsService
 		.insert(req.body)
-	 	.then(res.status(200).json(req.body))
+		.then(res.status(200).json(req.body))
 		.catch(err => {
 			console.log(err.message)
-		}
-	)
+		})
 }
 
 function getAll(req, res) {
-	
 	contactsService
 		.getAll()
 		.then(data => {
 			console.log(data)
 			res.status(200).json(data)
-	
 		})
-		.catch();
+		.catch(err => {
+			console.log(err.message)
+		});
 }
-

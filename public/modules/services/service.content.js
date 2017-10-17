@@ -9,11 +9,18 @@
 
     function ContentServiceFactory($http, $q) {
         return {
-            getAll: getAll
+            getAllContacts: getAllContacts,
+            insert: insert,
         }
 
-        function getAll() {
+        function getAllContacts() {
             return $http.get('/api/contacts')
+                .then(onSuccess)
+                .catch(onError)
+        }
+
+        function insert(contact, onSuccess, onError) {
+            return $http.post('/api/contacts', contact)
                 .then(onSuccess)
                 .catch(onError)
         }

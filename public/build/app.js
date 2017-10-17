@@ -39,14 +39,14 @@ $(function () {
 
     function RouteConfig($stateProvider) {
         $stateProvider.state('app.contacts', {
+            abstract: true,
+            url: '/contacts'
+        }).state('app.contacts.contacts', {
             url: '/contacts',
             views: {
                 'content@app': {
                     templateUrl: '/public/modules/contacts/contacts.html',
-                    controller: 'contactsController as ctrl',
-                    resolve: {
-                        contacts: getAllContacts
-                    }
+                    controller: 'contactsController as contactCtrl'
                 }
             }
         }).state('app.contacts.list', {
@@ -54,22 +54,11 @@ $(function () {
             views: {
                 'content@app': {
                     templateUrl: '/public/modules/contacts/contacts.list.html',
-                    controller: 'contactsListController as ctrl',
-                    resolve: {
-                        contacts: getAllContacts
-                    }
+                    controller: 'contactsListController as ctrl'
+
                 }
             }
         });
-
-        function getAllContacts(contentService) {
-            debugger;
-            return contentService.getAll().then(function (data) {
-                return data.items;
-            }).catch(function (error) {
-                console.log(error);
-            });
-        }
     }
 })();
 'use strict';
@@ -125,35 +114,55 @@ $(function () {
 
 /* global angular */
 (function () {
-        'use strict';
+    'use strict';
 
-        angular.module('home.contacts').controller('contactsListController', ContactsListController);
+    angular.module('home.contacts').controller('contactsListController', ContactsListController);
 
-        ContactsListController.$inject = ['contentService'];
+    ContactsListController.$inject = ['contentService'];
 
-        function ContactsListController(contentService) {
+    function ContactsListController(contentService) {
 
-                var vm = this;
-                vm.header = "Let's add some contacts";
-                vm.inputData = {};
+        var vm = this;
+        vm.header = "Let's add some contacts";
+        init();
+
+        function init() {
+            return contentService.getAllContacts().then(function (data) {
+                debugger;
+                vm.contacts = data;
+                console.log(vm.contacts);
+            }).catch(function (error) {
+                console.log(error);
+            });
         }
+    }
 })();
 'use strict';
 
 /* global angular */
 (function () {
-        'use strict';
+    'use strict';
 
-        angular.module('home.contacts').controller('contactsController', ContactsController);
+    angular.module('home.contacts').controller('contactsController', ContactsController);
 
-        ContactsController.$inject = ['contentService'];
+    ContactsController.$inject = ['contentService'];
 
-        function ContactsController(contentService) {
+    function ContactsController(contentService) {
 
-                var vm = this;
-                vm.header = "Let's add some contacts";
-                vm.inputData = {};
+        var vm = this;
+        vm.header = "Let's add some contacts";
+
+        vm.submitForm = function () {
+            return contentService.insert(vm.formData).then(onInsertSuccess).catch(onInsertError);
+        };
+
+        function onInsertSuccess(data) {
+            console.log("success");
         }
+        function onInsertError(error) {
+            console.log(error);
+        }
+    }
 })();
 'use strict';
 
@@ -183,11 +192,16 @@ $(function () {
 
     function ContentServiceFactory($http, $q) {
         return {
-            getAll: getAll
+            getAllContacts: getAllContacts,
+            insert: insert
         };
 
-        function getAll() {
+        function getAllContacts() {
             return $http.get('/api/contacts').then(onSuccess).catch(onError);
+        }
+
+        function insert(contact, onSuccess, onError) {
+            return $http.post('/api/contacts', contact).then(onSuccess).catch(onError);
         }
 
         function onSuccess(response) {

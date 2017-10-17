@@ -1,1 +1,23 @@
-<h1>testing</h1>
+
+<div class="container col-xs-9">
+    <table class="table table-striped table-hover table-bordered table-responsive">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email Address</th>
+                <th>Birthday</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="contact in ctrl.contacts">
+                <th>{{$index + 1}}</th>
+                <th>{{contact.firstName}}</th>
+                <th>{{contact.lastName}}</th>
+                <th>{{contact.email}}</th>
+                <th>{{contact.birthday}}</th>
+            </tr>
+        </tbody>
+    </table>
+</div>

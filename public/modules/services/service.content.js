@@ -12,7 +12,6 @@
             getAllContacts: getAllContacts,
             getById: getById,
             insert: insert,
-            
         }
 
         function getAllContacts() {
@@ -29,8 +28,8 @@
 
         function getById(id, onSuccess, onError) {
             return $http.get('/api/contacts/${id}')
-            .then(onSuccess)
-            .catch(onError)
+                .then(onSuccess)
+                .catch(onError)
         }
 
         function onSuccess(response) {

@@ -35,18 +35,18 @@ function getAll(req, res) {
 }
 
 function getOneById(req, res) {
-	debugger
 	let queryCondition = {
 		id: req.params.id
 	}
 	contactsService
 		.getOne(queryCondition)
-		.then(contact =>{
-			console.log(contact)
-			res.status(200).json(contact)
+		.then(data => {
+			debugger
+			console.log(data)
+			res.status(200).json(data)
 		})
 		.catch(err => {
-			console.log(err)
+			console.log(err.message)
 		})
 }
 

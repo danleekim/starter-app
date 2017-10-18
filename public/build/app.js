@@ -136,8 +136,8 @@ $(function () {
 
         function init() {
             return contentService.getById($stateParams.id).then(function (data) {
-                vm.contacts = data;
-                console.log(vm.contacts);
+                vm.contact = data;
+                console.log(vm.contact);
             }).catch(function (error) {
                 console.log(error);
             });
@@ -189,6 +189,7 @@ $(function () {
 
         function onInsertSuccess(data) {
             console.log("success");
+            vm.formData = '';
         }
 
         function onInsertError(error) {
@@ -227,7 +228,6 @@ $(function () {
             getAllContacts: getAllContacts,
             getById: getById,
             insert: insert
-
         };
 
         function getAllContacts() {

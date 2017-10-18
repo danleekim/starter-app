@@ -7,6 +7,7 @@
                 <th>Last Name</th>
                 <th>Email Address</th>
                 <th>Birthday</th>
+                <th>ID</th>
             </tr>
         </thead>
         <tbody>
@@ -16,6 +17,7 @@
                 <th>{{contact.lastName}}</th>
                 <th>{{contact.email}}</th>
                 <th>{{contact.birthday | date : 'MM/dd/yy'}}</th>
+                <th>{{contact._id}}</th>
             </tr>
         </tbody>
     </table>

@@ -17,7 +17,8 @@
             .catch(onInsertError)
 
         function onInsertSuccess(data) {
-            console.log("success")
+            console.log("success");
+            vm.formData = '';
         }
 
         function onInsertError(error) {

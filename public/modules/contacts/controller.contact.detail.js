@@ -16,8 +16,8 @@
         function init() {
             return contentService.getById($stateParams.id)
             .then(data =>{
-                vm.contacts = data;
-                console.log(vm.contacts)
+                vm.contact = data;
+                console.log(vm.contact)
             })
             .catch(error => {
                 console.log(error)

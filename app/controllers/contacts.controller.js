@@ -38,11 +38,9 @@ function getOneById(req, res) {
 	let queryCondition = {
 		id: req.params._id
 	}
-	debugger
 	contactsService
 		.getOne(queryCondition)
 		.then(data => {
-			debugger
 			console.log(data._doc)
 			res.status(200).json(data._doc)
 		})

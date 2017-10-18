@@ -27,7 +27,6 @@
         }
 
         function getById(id, onSuccess, onError) {
-            debugger
             return $http.get('/api/contacts/${id}')
                 .then(onSuccess)
                 .catch(onError)

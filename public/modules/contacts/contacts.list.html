@@ -13,7 +13,7 @@
         <tbody>
             <tr ng-repeat="contact in ctrl.contacts">
                 <th>{{$index + 1}}</th>
-                <th><a ui-sref="app.contacts.detail({id: contact._id})">{{contact.firstName}}</a></th>
+                <th><a ui-sref="app.contacts.detail({_id: contact._id})">{{contact.firstName}}</a></th>
                 <th>{{contact.lastName}}</th>
                 <th>{{contact.email}}</th>
                 <th>{{contact.birthday | date : 'MM/dd/yy'}}</th>

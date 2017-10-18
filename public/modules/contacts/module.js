@@ -30,7 +30,7 @@
                 }
             })
             .state('app.contacts.detail', {
-                url: '/detail/:id',
+                url: '/detail/:_id',
                 views: {
                     'content@app': {
                         templateUrl: '/public/modules/contacts/contact.detail.html',

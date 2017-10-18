@@ -14,7 +14,7 @@
         init();
 
         function init() {
-            return contentService.getById($stateParams.id)
+            return contentService.getById($stateParams._id)
             .then(data =>{
                 vm.contact = data;
                 console.log(vm.contact)

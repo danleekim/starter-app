@@ -66,3 +66,7 @@ footer {
 .profilebtn{
     vertical-align: text-bottom;
 }
+
+#detail-page{
+    height: 100%;
+}

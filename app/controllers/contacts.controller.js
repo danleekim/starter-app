@@ -36,20 +36,20 @@ function getAll(req, res) {
 
 function getOneById(req, res) {
 	let queryCondition = {
-		id: req.params.id
+		id: req.params._id
 	}
+	debugger
 	contactsService
 		.getOne(queryCondition)
 		.then(data => {
 			debugger
-			console.log(data)
-			res.status(200).json(data)
+			console.log(data._doc)
+			res.status(200).json(data._doc)
 		})
 		.catch(err => {
 			console.log(err.message)
 		})
 }
-
 
 function removeById(req, res) {
 	let queryCondition = {

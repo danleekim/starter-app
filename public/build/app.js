@@ -58,7 +58,7 @@ $(function () {
                 }
             }
         }).state('app.contacts.detail', {
-            url: '/detail/:id',
+            url: '/detail/:_id',
             views: {
                 'content@app': {
                     templateUrl: '/public/modules/contacts/contact.detail.html',
@@ -135,7 +135,7 @@ $(function () {
         init();
 
         function init() {
-            return contentService.getById($stateParams.id).then(function (data) {
+            return contentService.getById($stateParams._id).then(function (data) {
                 vm.contact = data;
                 console.log(vm.contact);
             }).catch(function (error) {
@@ -239,6 +239,7 @@ $(function () {
         }
 
         function getById(id, onSuccess, onError) {
+            debugger;
             return $http.get('/api/contacts/${id}').then(onSuccess).catch(onError);
         }
 

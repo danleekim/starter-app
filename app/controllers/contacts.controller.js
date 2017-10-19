@@ -10,7 +10,8 @@ module.exports = {
 	getAll: getAll,
 	insert: insert,
 	getOneById: getOneById,
-	removeById: removeById
+	removeById: removeById,
+	updateById: updateById,
 }
 
 function insert(req, res) {
@@ -36,7 +37,7 @@ function getAll(req, res) {
 
 function getOneById(req, res) {
 	let queryCondition = {
-		id: req.params._id
+		_id: req.params.id
 	}
 	contactsService
 		.getOne(queryCondition)
@@ -59,7 +60,21 @@ function removeById(req, res) {
 			console.log(data)
 			res.status(200).json(data)
 		})
-		.catch(err =>{
+		.catch(err => {
 			console.log(err.message)
 		})
+}
+
+function updateById(req, res) {
+	let queryCondition = {
+		_id: req.params.id
+	};
+	contactsService
+		.updateOne(queryCondition, req.body)
+		.then(data => {
+			res.status(204).json(data);
+		})
+		.catch(err => {
+			console.log(err.stack);
+		});
 }

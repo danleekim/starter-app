@@ -131,7 +131,7 @@ $(function () {
     function ContactsDetailController($stateParams, $state, contentService) {
 
         var vm = this;
-
+        var id = $stateParams._id;
         init();
 
         function init() {
@@ -142,31 +142,24 @@ $(function () {
                 console.log(error);
             });
         }
-    }
-})();
-'use strict';
 
-/* global angular */
-(function () {
-    'use strict';
+        vm.removeContact = function (id) {
+            console.log("btn clicked");
+            contentService.remove(id).then(onSuccess).catch(onError);
+        };
 
-    angular.module('home.contacts').controller('contactsListController', ContactsListController);
-
-    ContactsListController.$inject = ['$stateParams', 'contentService'];
-
-    function ContactsListController($stateParams, contentService) {
-
-        var vm = this;
-
-        init();
-
-        function init() {
-            return contentService.getAllContacts().then(function (data) {
-                vm.contacts = data;
-            }).catch(function (error) {
-                console.log(error);
-            });
+        function onSuccess() {
+            console.log("Success");
+            $state.go('app.contacts.list');
         }
+
+        function onError(data) {
+            console.log(data);
+        }
+
+        vm.submitEdit = function () {
+            contentService.update(vm.contact.data._id, vm.formData).then(onSuccess).catch(onError);
+        };
     }
 })();
 'use strict';
@@ -201,6 +194,31 @@ $(function () {
 
 /* global angular */
 (function () {
+    'use strict';
+
+    angular.module('home.contacts').controller('contactsListController', ContactsListController);
+
+    ContactsListController.$inject = ['$stateParams', 'contentService'];
+
+    function ContactsListController($stateParams, contentService) {
+
+        var vm = this;
+
+        init();
+
+        function init() {
+            return contentService.getAllContacts().then(function (data) {
+                vm.contacts = data;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    }
+})();
+'use strict';
+
+/* global angular */
+(function () {
         'use strict';
 
         angular.module('home.content').controller('contentController', ContentController);
@@ -227,7 +245,9 @@ $(function () {
         return {
             getAllContacts: getAllContacts,
             getById: getById,
-            insert: insert
+            insert: insert,
+            remove: remove,
+            update: update
         };
 
         function getAllContacts() {
@@ -239,7 +259,15 @@ $(function () {
         }
 
         function getById(id, onSuccess, onError) {
-            return $http.get('/api/contacts/${id}').then(onSuccess).catch(onError);
+            return $http.get('/api/contacts/' + id).then(onSuccess).catch(onError);
+        }
+
+        function remove(id, onSuccess, onError) {
+            return $http.delete('/api/contacts/' + id).then(onSuccess).catch(onError);
+        }
+
+        function update(_id, contact, onSuccess, onError) {
+            return $http.put('/api/contacts/' + _id, contact).then(onSuccess).catch(onError);
         }
 
         function onSuccess(response) {

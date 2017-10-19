@@ -2,28 +2,41 @@
     <div class="profile-box col-xs-8 col-xs-offset-2">
         <img src="http://lorempixel.com/200/200" class="profile-pic">
         <form>
-                <div class="form-group">
-                    <label for="firstName">First Name</label>
-                    <input type="firstName" ng-model="ctrl.formData.firstName" class="form-control" id="firstNameInput" placeholder="First Name">
-                </div>
-                <div class="form-group">
-                    <label for="lastName">Last Name</label>
-                    <input type="lastName" ng-model="ctrl.formData.lastName"class="form-control" id="lastNameInput" placeholder="Last Name">
-                </div>
-                <div class="form-group">
-                    <label for="email">Email address</label>
-                    <input ng-model="ctrl.formData.email" type="email" class="form-control" id="emailInput" placeholder="name@something.com">
-                </div>
-                <div class="form-group">
-                    <label for="birthday">Birthday</label>
-                    <input type="birthday" ng-model="ctrl.formData.birthday" class="form-control" id="birthdayInput" placeholder="Birthday (mm/dd/yy)">
-                </div>     
-        
-            </form>
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="firstName" ng-model="ctrl.contact.data.firstName" ng-disabled="ctrl.contact" class="form-control" id="firstNameInput"
+                    placeholder="First Name">
+                <br/ ng-show="showHide">
+                    <input type="firstName" ng-show="showHide" ng-model="ctrl.formData.firstName" class="form-control" id="firstNameInput" placeholder="{{ctrl.contact.data.firstName}}">
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="lastName" ng-model="ctrl.contact.data.lastName" ng-disabled="ctrl.contact" class="form-control" id="lastNameInput"
+                    placeholder="Last Name">
+                <br/ ng-show="showHide">
+                    <input type="lastName" ng-show="showHide" ng-model="ctrl.formData.lastName" class="form-control" id="lastNameInput" placeholder="{{ctrl.contact.data.lastName}}">
+            </div>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input ng-model="ctrl.contact.data.email" type="email" ng-disabled="ctrl.contact" class="form-control" id="emailInput" placeholder="Updated email">
+                <br/ ng-show="showHide">
+                    <input ng-show="showHide" ng-model="ctrl.formData.email" type="email" class="form-control" id="emailInput" placeholder="{{ctrl.contact.data.email}}">
+            </div>
+            <div class="form-group">
+                <label for="birthday">Birthday</label>
+                <input type="birthday" ng-model="ctrl.contact.data.birthday" type="date" ng-disabled="ctrl.contact" class="form-control"
+                    id="birthdayInput" placeholder="Birthday (mm/dd/yy)">
+                <br/ ng-show="showHide">
+                    <input ng-show="showHide" type="birthday" ng-model="ctrl.formData.birthday" type="date" class="form-control" id="birthdayInput"
+                        placeholder="{{ctrl.contact.data.birthday}}">
+            </div>
 
-        <button type="button" class="btn btn-light profilebtn">Light</button>
-        <button type="button" class="btn btn-light profilebtn">Light</button>
-        <button type="button" class="btn btn-light profilebtn">Light</button>
+        </form>
+
+        <button type="button" ui-sref="app.contacts.list" class="btn btn-light profilebtn pull-left">Go Back</button>
+        <button type="button" ng-click="showHide = !showHide" class="btn btn-light profilebtn">Edit</button>
+        <button type="button" class="btn btn-light profilebtn" ng-click="ctrl.submitEdit()">Submit</button>
+        <button type="button" ng-click="ctrl.removeContact(ctrl.contact.data._id)" class="btn btn-danger profilebtn pull-right">Delete</button>
     </div>
 
 </div>

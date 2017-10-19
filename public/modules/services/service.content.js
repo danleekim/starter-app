@@ -12,6 +12,8 @@
             getAllContacts: getAllContacts,
             getById: getById,
             insert: insert,
+            remove: remove,
+            update: update
         }
 
         function getAllContacts() {
@@ -27,7 +29,19 @@
         }
 
         function getById(id, onSuccess, onError) {
-            return $http.get('/api/contacts/${id}')
+            return $http.get(`/api/contacts/${id}`)
+                .then(onSuccess)
+                .catch(onError)
+        }     
+
+        function remove(id, onSuccess, onError) {
+            return $http.delete(`/api/contacts/${id}`)
+                .then(onSuccess)
+                .catch(onError)
+        }
+
+        function update(_id, contact, onSuccess, onError) {
+            return $http.put(`/api/contacts/${_id}`, contact)
                 .then(onSuccess)
                 .catch(onError)
         }

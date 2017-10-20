@@ -44,8 +44,6 @@
             contentService.update(vm.contact.data._id, vm.formData)
             .then(onSuccess)
             .catch(onError)
-        }
-
-        
+        }       
     }
 })();

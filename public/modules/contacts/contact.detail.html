@@ -30,7 +30,6 @@
                     <input ng-show="showHide" type="birthday" ng-model="ctrl.formData.birthday" type="date" class="form-control" id="birthdayInput"
                         placeholder="{{ctrl.contact.data.birthday}}">
             </div>
-
         </form>
 
         <button type="button" ui-sref="app.contacts.list" class="btn btn-light profilebtn pull-left">Go Back</button>
@@ -38,6 +37,4 @@
         <button type="button" class="btn btn-light profilebtn" ng-click="ctrl.submitEdit()">Submit</button>
         <button type="button" ng-click="ctrl.removeContact(ctrl.contact.data._id)" class="btn btn-danger profilebtn pull-right">Delete</button>
     </div>
-
 </div>
-<pre>{{ctrl | json}}</pre>

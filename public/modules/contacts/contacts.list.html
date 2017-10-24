@@ -1,4 +1,132 @@
 <div class="container col-xs-9">
+
+    <div class="wrap">
+        <div class="cube">
+            <div class="front">
+                <table class="table table-striped table-hover table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email Address</th>
+                            <th>Birthday</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="contact in ctrl.contacts">
+                            <th>{{$index + 1}}</th>
+                            <th>
+                                <a ui-sref="app.contacts.detail({_id: contact._id})">{{contact.firstName}}</a>
+                            </th>
+                            <th>{{contact.lastName}}</th>
+                            <th>{{contact.email}}</th>
+                            <th>{{contact.birthday | date : 'MM/dd/yy'}}</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="back">
+                <table class="table table-striped table-hover table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email Address</th>
+                            <th>Birthday</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="contact in ctrl.contacts">
+                            <th>{{$index + 1}}</th>
+                            <th>
+                                <a ui-sref="app.contacts.detail({_id: contact._id})">{{contact.firstName}}</a>
+                            </th>
+                            <th>{{contact.lastName}}</th>
+                            <th>{{contact.email}}</th>
+                            <th>{{contact.birthday | date : 'MM/dd/yy'}}</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="top">top</div>
+            <div class="bottom">bottom</div>
+            <div class="left">
+                <table class="table table-striped table-hover table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email Address</th>
+                            <th>Birthday</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="contact in ctrl.contacts">
+                            <th>{{$index + 1}}</th>
+                            <th>
+                                <a ui-sref="app.contacts.detail({_id: contact._id})">{{contact.firstName}}</a>
+                            </th>
+                            <th>{{contact.lastName}}</th>
+                            <th>{{contact.email}}</th>
+                            <th>{{contact.birthday | date : 'MM/dd/yy'}}</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="right">
+                <table class="table table-striped table-hover table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email Address</th>
+                            <th>Birthday</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="contact in ctrl.contacts">
+                            <th>{{$index + 1}}</th>
+                            <th>
+                                <a ui-sref="app.contacts.detail({_id: contact._id})">{{contact.firstName}}</a>
+                            </th>
+                            <th>{{contact.lastName}}</th>
+                            <th>{{contact.email}}</th>
+                            <th>{{contact.birthday | date : 'MM/dd/yy'}}</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--        
+            <table class="table table-striped table-hover table-bordered table-responsive">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email Address</th>
+                        <th>Birthday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="contact in ctrl.contacts">
+                        <th>{{$index + 1}}</th>
+                        <th>
+                            <a ui-sref="app.contacts.detail({_id: contact._id})">{{contact.firstName}}</a>
+                        </th>
+                        <th>{{contact.lastName}}</th>
+                        <th>{{contact.email}}</th>
+                        <th>{{contact.birthday | date : 'MM/dd/yy'}}</th>
+                    </tr>
+                </tbody>
+            </table> -->
+
+        </div>
+    </div>
+
     <table class="table table-striped table-hover table-bordered table-responsive">
         <thead>
             <tr>

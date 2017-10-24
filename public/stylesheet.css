@@ -7,11 +7,14 @@ div {
     height: 100%;
 }
 
+
 /* Remove the navbar's default margin-bottom and rounded borders */
+
 .navbar {
     margin-bottom: 0;
     border-radius: 0;
 }
+
 
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
 
@@ -21,20 +24,25 @@ div {
 
 
 /* Set gray background color and 100% height */
+
 .sidenav {
     padding-top: 20px;
     background-color: #f1f1f1;
     height: 100%;
 }
 
+
 /* Set black background color, white text and some padding */
+
 footer {
     background-color: #555;
     color: white;
     padding: 15px;
 }
 
+
 /* On small screens, set height to 'auto' for sidenav and grid */
+
 @media screen and (max-width: 767px) {
     .sidenav {
         height: auto;
@@ -51,19 +59,147 @@ footer {
     height: 950px
 }
 
-.profile-box{
+.profile-box {
     background-color: rgb(85, 178, 224);
     text-align: center;
     padding-top: 2em;
     height: 800px;
 }
 
-.profile-pic{
+.profile-pic {
     border-radius: 50%;
-	width: 200px;
-	height: 200px; 
+    width: 200px;
+    height: 200px;
 }
 
-.profilebtn{
+.profilebtn {
     vertical-align: text-bottom;
 }
+
+
+
+
+/* Cube start*/
+
+.wrap {
+    padding: 10em 0 0 20em;
+    perspective: 800px;
+    perspective-origin: 100% 2px;
+}
+
+.cube {
+    position: relative;
+    width: 600px;
+    transform-style: preserve-3d;
+}
+
+.cube div {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-image: webkit-gradient(linear, left top, left bottom, from(blue), to(orange));
+    background-image: -webkit-linear-gradient(top, blue, orange);
+    background-image: -moz-linear-gradient(top, blue, orange);
+    background-image: linear-gradient(to bottom, blue, orange);
+}
+
+.back {
+    transform: translateZ(-100px) rotateY(180deg);
+    /* background-image: webkit-gradient(linear, left top, left bottom, from(blue), to(orange));
+    background-image: -webkit-linear-gradient(top, blue, orange);
+    background-image: -moz-linear-gradient(top, blue, orange);
+    background-image: linear-gradient(to bottom, blue, orange); */
+}
+
+.right {
+    transform: rotateY(-270deg) translateX(100px);
+    transform-origin: top right;
+    /* background-image: webkit-gradient(linear, left top, left bottom, from(blue), to(orange));
+    background-image: -webkit-linear-gradient(top, blue, orange);
+    background-image: -moz-linear-gradient(top, blue, orange);
+    background-image: linear-gradient(to bottom, blue, orange); */
+}
+
+.left {
+    transform: rotateY(270deg) translateX(-100px);
+    transform-origin: center left;
+    /* background-image: webkit-gradient(linear, left top, left bottom, from(blue), to(orange));
+    background-image: -webkit-linear-gradient(top, blue, orange);
+    background-image: -moz-linear-gradient(top, blue, orange);
+    background-image: linear-gradient(to bottom, blue, orange); */
+}
+
+.top {
+    transform: rotateX(-90deg) translateY(-100px);
+    transform-origin: top center;
+    /* background-image: webkit-radial-gradient(blue, orange); */
+}
+
+.bottom {
+    transform: rotateX(90deg) translateY(100px);
+    transform-origin: bottom center;
+}
+
+.front {
+    transform: translateZ(100px);
+    /* background-image: webkit-gradient(linear, left top, left bottom, from(blue), to(orange));
+    background-image: -webkit-linear-gradient(top, blue, orange);
+    background-image: -moz-linear-gradient(top, blue, orange);
+    background-image: linear-gradient(to bottom, blue, orange); */
+}
+
+@keyframes spin {
+    from {
+        transform: rotateY(0);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+.cube {
+    animation: spin 20s infinite linear;
+}
+
+@keyframes spin-vertical {
+    from {
+        transform: rotateX(0);
+    }
+    to {
+        transform: rotateX(-360deg);
+    }
+}
+
+.cube-wrap.vertical .cube {
+    margin: 0 auto;
+    /* keeps the cube centered */
+    transform-origin: 0 100px;
+    animation: spin-vertical 5s infinite linear;
+}
+
+.cube-wrap.vertical .top {
+    transform: rotateX(-270deg) translateY(-100px);
+}
+
+.cube-wrap.vertical .back {
+    transform: translateZ(-100px) rotateX(180deg);
+}
+
+.cube-wrap.vertical .bottom {
+    transform: rotateX(-90deg) translateY(100px);
+}
+
+
+/* Cube end*/
+
+
+/* Cube end*/
+
+
+/* Cube end*/
+
+
+/* Cube end*/
+
+
+/* Cube end*/
